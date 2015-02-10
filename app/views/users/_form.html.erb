@@ -1,0 +1,17 @@
+<%= simple_form_for @user do |f| %>
+  <div class='text-field'>
+    <%= f.input :name, type: "name" %>
+  </div>
+
+  <div class='text-field'>
+    <%= f.input :email, type: "email" %>
+  </div>
+
+  <div class='password-field'>
+    <%= f.input :password, type: "password" %>
+  </div>
+
+  <div class='submit-field'>
+    <%= f.button :submit %>
+  </div>
+<% end %>

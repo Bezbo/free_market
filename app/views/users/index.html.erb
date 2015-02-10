@@ -1,0 +1,14 @@
+<h1>User index</h1>
+
+  <table>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </table>

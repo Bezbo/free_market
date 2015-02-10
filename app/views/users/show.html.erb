@@ -1,0 +1,7 @@
+<h1>User info</h1>
+
+<b>name:</b> <%= @user.name %>
+<br>
+<b>email:</b> <%= @user.email %>
+<br>
+<%= link_to 'delete', @user, method: :delete, data: { confirm: 'are you sure?' } %>
