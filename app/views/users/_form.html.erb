@@ -11,7 +11,14 @@
     <%= f.input :password, type: "password" %>
   </div>
 
+  <% if current_user && current_user.role == "admin" %>
+    <div>
+      <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    </div>
+  <% end %>
+
   <div class='submit-field'>
     <%= f.button :submit %>
   </div>
+
 <% end %>

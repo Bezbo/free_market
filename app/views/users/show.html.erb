@@ -4,4 +4,12 @@
 <br>
 <b>email:</b> <%= @user.email %>
 <br>
-<%= link_to 'delete', @user, method: :delete, data: { confirm: 'are you sure?' } %>
+<b>role:</b> <%= @user.role %>
+<br>
+<% if can? :update, @user %>
+  <%= link_to "edit", edit_user_path %>
+<%end%>
+<br>
+<% if can? :destroy, @user %>
+  <%= link_to "delete", @user, method: :delete, data: { confirm: "are you sure?" } %>
+<% end %>

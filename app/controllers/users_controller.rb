@@ -1,20 +1,23 @@
 class UsersController < Clearance::UsersController
 
+  before_filter :cancan_strong_parameters
+
+  load_resource
+  authorize_resource only: [:edit, :update, :destroy]
+
   def index
-    @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
-    @user = User.new
   end
 
   def create
-    @user = User.new(permit_params)
+    @user = User.new(user_params)
     if @user.save
+      sign_in @user
       redirect_to @user
     else
       render "new"
@@ -22,12 +25,10 @@ class UsersController < Clearance::UsersController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(permit_params)
+    if @user.update_attributes(user_params)
       redirect_to @user
     else
       render "edit"
@@ -35,15 +36,18 @@ class UsersController < Clearance::UsersController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     redirect_to users_url
   end
 
   private
 
-  def permit_params
-    params.require(:user).permit(:name, :email, :password)
+  def user_params
+    if current_user && current_user.role == "admin"
+      params.require(:user).permit(:name, :email, :password, :role)
+    else
+      params.require(:user).permit(:name, :email, :password)
+    end
   end
 
   def user_from_params
@@ -57,6 +61,12 @@ class UsersController < Clearance::UsersController
       user.password = password
       user.name = name
     end
+  end
+
+  def cancan_strong_parameters
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
   end
 
 end
