@@ -6,6 +6,26 @@
 <br>
 <b>role:</b> <%= @user.role %>
 <br>
+<br>
+
+<table>
+  <tr>
+    <th>items added:</th>
+  </tr>
+  <% if @user.items.any? %>
+    <% @user.items.each do |item| %>
+      <tr>
+        <td><%= link_to item.name, item_path %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td>none</td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
 <% if can? :update, @user %>
   <%= link_to "edit", edit_user_path %>
 <%end%>
