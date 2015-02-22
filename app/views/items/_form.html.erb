@@ -1,0 +1,14 @@
+<%= simple_form_for @item do |f| %>
+  <div class='text-field'>
+    <%= f.input :name, type: "name" %>
+  </div>
+
+  <div class='text-field'>
+    <%= f.input :description, type: "description" %>
+  </div>
+
+  <div class='submit-field'>
+    <%= f.button :submit %>
+  </div>
+
+<% end %>

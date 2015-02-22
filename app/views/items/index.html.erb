@@ -1,0 +1,14 @@
+<h1>item index</h1>
+
+  <%= link_to "create", new_item_path %>
+
+  <table>
+    <tr>
+      <th>name</th>
+    </tr>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= link_to item.name, item %></td>
+      </tr>
+    <% end %>
+  </table>

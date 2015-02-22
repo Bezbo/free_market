@@ -5,11 +5,12 @@ class Ability
     user ||= User.new
 
     can :read, :all
-    can :update,  User, id: user.id
-    can :destroy, User, id: user.id
+    can [:update, :destroy], User, id: user.id
+    can :create,  Item
+    can [:update, :destroy], Item, user_id: user.id
 
     if user.role == "moderator"
-      can :manage, User
+      can :manage, [User, Item]
       cannot :update, :role
     end
 

@@ -1,0 +1,15 @@
+<h1>Item info</h1>
+
+<b>name:</b> <%= @item.name %>
+<br>
+<b>description:</b> <%= @item.description %>
+<br>
+<b>added by:</b> <%= link_to @item.user.name, @item.user %>
+<br>
+<% if can? :update, @item %>
+  <%= link_to "edit", edit_item_path %>
+<% end %>
+<br>
+<% if can? :destroy, @item %>
+  <%= link_to "delete", @item, method: :delete, data: { confirm: "are you sure?" } %>
+<% end %>
