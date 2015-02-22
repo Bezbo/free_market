@@ -15,7 +15,7 @@
   <% if @user.items.any? %>
     <% @user.items.each do |item| %>
       <tr>
-        <td><%= link_to item.name, item_path %></td>
+        <td><%= link_to item.name, item %></td>
       </tr>
     <% end %>
   <% else %>
