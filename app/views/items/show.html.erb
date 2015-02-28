@@ -1,5 +1,7 @@
 <h1>Item info</h1>
 
+<b>image:</b> <%= link_to image_tag(@item.item_image.url(:medium)), @item.item_image.url %>
+<br>
 <b>name:</b> <%= @item.name %>
 <br>
 <b>description:</b> <%= @item.description %>

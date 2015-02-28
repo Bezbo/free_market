@@ -1,10 +1,20 @@
-<%= simple_form_for @item do |f| %>
+<%= simple_form_for @item, html: { multipart: true } do |f| %>
   <div class='text-field'>
     <%= f.input :name, type: "name" %>
   </div>
 
   <div class='text-field'>
     <%= f.input :description, type: "description" %>
+  </div>
+
+  <div class='attachment-preview'>
+    <% if @item.item_image? %>
+      <%= image_tag @item.item_image.url(:thumb) %>
+    <% end %>
+  </div>
+
+  <div class='attachment-field'>
+    <%= f.file_field :item_image %>
   </div>
 
   <div class='submit-field'>

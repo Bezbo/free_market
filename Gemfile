@@ -8,6 +8,8 @@ gem 'pg'
 gem 'clearance'
 gem 'simple_form'
 gem 'cancancan'
+gem "paperclip", "~> 4.2"
+gem 'rmagick'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
