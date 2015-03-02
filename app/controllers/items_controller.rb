@@ -6,7 +6,11 @@ class ItemsController < ApplicationController
   authorize_resource except: [:index, :show]
 
   def index
-    @items = Item.all
+    if params[:tag]
+      @items = Item.tagged_with(params[:tag])
+    else
+      @items = Item.all
+    end
   end
 
   def show
@@ -41,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :user_id, :item_image)
+    params.require(:item).permit(:name, :description, :user_id, :item_image, :tag_list)
   end
 
 end

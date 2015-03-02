@@ -4,6 +4,10 @@
   </div>
 
   <div class='text-field'>
+    <%= f.input :tag_list, type: "tags", label: "Tags (separated by commas)" %>
+  </div>
+
+  <div class='text-field'>
     <%= f.input :description, type: "description" %>
   </div>
 
@@ -14,7 +18,7 @@
   </div>
 
   <div class='attachment-field'>
-    <%= f.file_field :item_image %>
+    <%= f.input :item_image, label: "Image" %>
   </div>
 
   <div class='submit-field'>

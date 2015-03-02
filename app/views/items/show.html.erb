@@ -6,6 +6,8 @@
 <br>
 <b>description:</b> <%= @item.description %>
 <br>
+<b>tags:</b> <%= raw @item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+<br>
 <b>added by:</b> <%= link_to @item.user.name, @item.user %>
 <br>
 <% if can? :update, @item %>

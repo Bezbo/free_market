@@ -1,7 +1,13 @@
 <h1>item index</h1>
 
-  <%= link_to "create", new_item_path %>
-
+  <div id="tag_cloud">
+    <b>Tag cloud:</b>
+    <br>
+    <% tag_cloud Item.tag_counts, %w[s m l] do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <% end %>
+  </div>
+  <br>
   <table>
     <tr>
       <th>name</th>
