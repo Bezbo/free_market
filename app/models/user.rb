@@ -10,4 +10,12 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }, on: :create
 
   ROLES = %w[admin moderator user]
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name ILIKE ? OR email ILIKE?', "%#{search}%", "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
 end

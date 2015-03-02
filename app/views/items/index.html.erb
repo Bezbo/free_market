@@ -1,5 +1,11 @@
+<%= render partial: 'shared/page_with_search',
+           locals: {search_path: items_path, search_placeholder: "item search.."} %>
+
 <h1>item index</h1>
 
+<% if @items.empty? %>
+  no results..
+<% else %>
   <div id="tag_cloud">
     <b>Tag cloud:</b>
     <br>
@@ -10,7 +16,7 @@
   <br>
   <table>
     <tr>
-      <th>name</th>
+      <th>items:</th>
     </tr>
     <% @items.each do |item| %>
       <tr>
@@ -19,3 +25,6 @@
       </tr>
     <% end %>
   </table>
+<% end %>
+
+

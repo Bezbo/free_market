@@ -7,9 +7,9 @@ class ItemsController < ApplicationController
 
   def index
     if params[:tag]
-      @items = Item.tagged_with(params[:tag])
+      @items = Item.tagged_with(params[:tag]).search(params[:term])
     else
-      @items = Item.all
+      @items = Item.search(params[:term])
     end
   end
 

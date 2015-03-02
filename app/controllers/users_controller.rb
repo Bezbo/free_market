@@ -6,6 +6,7 @@ class UsersController < Clearance::UsersController
   authorize_resource only: [:edit, :update, :destroy]
 
   def index
+    @users = User.search(params[:term])
   end
 
   def show

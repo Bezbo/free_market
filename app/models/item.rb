@@ -13,4 +13,15 @@ class Item < ActiveRecord::Base
                         content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
                         matches: [/jpe?g\Z/, /gif\Z/, /png\Z/],
                         size: { less_than: 10.megabytes }
+
+
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name ILIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
 end
