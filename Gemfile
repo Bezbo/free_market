@@ -11,6 +11,7 @@ gem 'cancancan'
 gem "paperclip", "~> 4.2"
 gem 'rmagick'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'geocoder'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

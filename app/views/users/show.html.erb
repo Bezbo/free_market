@@ -15,6 +15,7 @@
   <% if @user.items.any? %>
     <% @user.items.each do |item| %>
       <tr>
+        <td><%= image_tag item.item_image.url(:thumb) %></td>
         <td><%= link_to item.name, item %></td>
       </tr>
     <% end %>

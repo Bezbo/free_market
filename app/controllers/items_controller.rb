@@ -11,6 +11,10 @@ class ItemsController < ApplicationController
     else
       @items = Item.search(params[:term])
     end
+    respond_to do |format|
+      format.html
+      format.json{ render json: @items }
+    end
   end
 
   def show
@@ -45,7 +49,8 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :user_id, :item_image, :tag_list)
+    params.require(:item).permit(:name, :description, :user_id, :item_image,
+                                 :tag_list, :address, :latitude, :longitude)
   end
 
 end

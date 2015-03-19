@@ -11,6 +11,18 @@
     <%= f.input :description, type: "description" %>
   </div>
 
+  <div class='text-field'>
+    <%= f.input :address, type: "address" %>
+  </div>
+
+  <div class='text-field'>
+    <%= f.input :latitude, as: :hidden, type: "latitude" %>
+  </div>
+
+  <div class='text-field'>
+    <%= f.input :longitude, as: :hidden, type: "longitude" %>
+  </div>
+
   <div class='attachment-preview'>
     <% if @item.item_image? %>
       <%= image_tag @item.item_image.url(:thumb) %>
