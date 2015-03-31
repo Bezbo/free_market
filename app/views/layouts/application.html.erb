@@ -16,10 +16,11 @@
         <li><%= link_to "Add Item", new_item_path %></li>
         <li><%= link_to "Items", items_path %></li>
         <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "Help",  "#" %></li>
         <li>
           <% if signed_in? %>
-            <%= link_to "Sign out", sign_out_path, method: :delete %>
+            <li><%= link_to "My Profile", user_path(current_user) %></li>
+            <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+            <li id="signed_as"><%= current_user.email %></li>
           <% else %>
             <%= link_to "Sign in", sign_in_path %>
           <% end %>
@@ -32,5 +33,15 @@
     <%= yield %>
   </div>
 
+  <footer>
+    <div class="footer-left">
+      <span>contact us:</span>
+      <span>freemarket@example.com</span>
+    </div>
+    <div class="footer-right">
+      <span>(ɔ) copyleft</span>
+      <span>free to use and modify</span>
+    </div>
+  </footer>
 </body>
 </html>

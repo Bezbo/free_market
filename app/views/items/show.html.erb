@@ -1,37 +1,49 @@
 <h1>Item info</h1>
 
-<div>
+<div id="static_map">
   <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@item.latitude}%2C#{@item.longitude}" %>
 </div>
 
 <div>
-  <b>image:</b> <%= link_to image_tag(@item.item_image.url(:medium)), @item.item_image.url %>
-  <br>
-  <b>name:</b> <%= @item.name %>
-  <br>
-  <b>description:</b> <%= @item.description %>
-  <br>
-  <b>address:</b> <%= @item.address %>
-  <br>
-  <b>tags:</b> <%= raw @item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-  <br>
-  <b>added by:</b> <%= link_to @item.user.name, @item.user %>, <%= @item.created_at %>
-  <br>
-  <% if can? :update, @item %>
-    <%= link_to "edit", edit_item_path %>
-  <% end %>
-  <br>
-  <% if can? :destroy, @item %>
-    <%= link_to "delete", @item, method: :delete, data: { confirm: "are you sure?" } %>
-  <% end %>
-</div>
-
-<div>
+  <div class="update-destroy">
+    <% if can? :update, @item %>
+      <%= link_to "edit", edit_item_path %>
+    <% end %>
+    <% if can? :destroy, @item %>
+      <%= link_to "delete", @item, method: :delete, data: { confirm: "are you sure?" } %>
+    <% end %>
+  </div>
   <table>
     <tr>
-      <th>nearby items:</th>
+      <td><%= link_to image_tag(@item.item_image.url(:medium)), @item.item_image.url %></td>
     </tr>
+    <tr>
+      <td><b>name:</b></td>
+      <td><%= @item.name %></td>
+    </tr>
+    <tr>
+      <td><b>added by:</b></td>
+      <td><%= link_to @item.user.name, @item.user %>, <%= @item.created_at %></td>
+    </tr>
+    <tr>
+      <td><b>address:</b></td>
+      <td><%= @item.address %></td>
+    </tr>
+    <tr>
+      <td><b>tags:</b></td>
+      <td><%= raw @item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></td>
+    </tr>
+    <tr>
+      <td><b>description:</b></td>
+      <td><%= @item.description %></td>
+    </tr>
+  </table>
+
+  <table class="index" id="splitter">
     <% if @item.nearbys(100).any? %>
+      <tr>
+        <th>nearby items:</th>
+      </tr>
       <% @item.nearbys(100).each do |item| %>
         <tr>
           <td><%= image_tag item.item_image.url(:thumb) %></td>
@@ -40,7 +52,7 @@
       <% end %>
     <% else %>
       <tr>
-        <td>none</td>
+        <td><%= "#{@item.name} has not any nearby items" %></td>
       </tr>
     <% end %>
   </table>

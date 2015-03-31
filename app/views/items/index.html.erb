@@ -1,7 +1,7 @@
+<h1>item index</h1>
+
 <%= render partial: 'shared/page_with_search',
            locals: {search_path: items_path, search_placeholder: "item search.."} %>
-
-<h1>item index</h1>
 
 <% if @items.empty? %>
   no results..
@@ -11,12 +11,12 @@
   <div id="tag_cloud">
     <b>Tag cloud:</b>
     <br>
-    <% tag_cloud Item.tag_counts, %w[s m l] do |tag, css_class| %>
-      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <% tag_cloud Item.tag_counts.sort { |x, y| x.name <=> y.name }, %w[s m l] do |tag, css_class| %>
+      <div><%= link_to tag.name, tag_path(tag.name), class: css_class %></div>
     <% end %>
   </div>
   <br>
-  <table>
+  <table class="index">
     <tr>
       <th>items:</th>
     </tr>

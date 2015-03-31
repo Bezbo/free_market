@@ -1,18 +1,35 @@
 <h1>User info</h1>
 
-<b>name:</b> <%= @user.name %>
-<br>
-<b>email:</b> <%= @user.email %>
-<br>
-<b>role:</b> <%= @user.role %>
-<br>
-<br>
+<div>
+  <div class="update-destroy">
+    <% if can? :update, @user %>
+      <%= link_to "edit", edit_user_path %>
+    <%end%>
+    <% if can? :destroy, @user %>
+      <%= link_to "delete", @user, method: :delete, data: { confirm: "are you sure?" } %>
+    <% end %>
+  </div>
+  <table>
+    <tr>
+      <td><b>name:</b></td>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td><b>email:</b></td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td><b>role:</b></td>
+      <td><%= @user.role %></td>
+    </tr>
+  </table>
+</div>
 
-<table>
-  <tr>
-    <th>items added:</th>
-  </tr>
+<table class="index" id="splitter">
   <% if @user.items.any? %>
+    <tr>
+      <th>items added:</th>
+    </tr>
     <% @user.items.each do |item| %>
       <tr>
         <td><%= image_tag item.item_image.url(:thumb) %></td>
@@ -21,16 +38,7 @@
     <% end %>
   <% else %>
     <tr>
-      <td>none</td>
+      <td><%= "#{@user.name} has not added any items yet" %></td>
     </tr>
   <% end %>
 </table>
-
-<br>
-<% if can? :update, @user %>
-  <%= link_to "edit", edit_user_path %>
-<%end%>
-<br>
-<% if can? :destroy, @user %>
-  <%= link_to "delete", @user, method: :delete, data: { confirm: "are you sure?" } %>
-<% end %>

@@ -1,40 +1,42 @@
-<%= simple_form_for @item, html: { multipart: true } do |f| %>
-  <div class='text-field'>
-    <%= f.input :name, type: "name" %>
-  </div>
+<div class="form">
+  <%= simple_form_for @item, html: { multipart: true } do |f| %>
+    <div class='text-field'>
+      <%= f.input :name, type: "name" %>
+    </div>
 
-  <div class='text-field'>
-    <%= f.input :tag_list, type: "tags", label: "Tags (separated by commas)" %>
-  </div>
+    <div class='text-field'>
+      <%= f.input :address, type: "address" %>
+    </div>
 
-  <div class='text-field'>
-    <%= f.input :description, type: "description" %>
-  </div>
+    <div class='text-field'>
+      <%= f.input :tag_list, type: "tags", label: "Tags", hint: "separated by commas" %>
+    </div>
 
-  <div class='text-field'>
-    <%= f.input :address, type: "address" %>
-  </div>
+    <div class='text-field'>
+      <%= f.input :description, type: "description" %>
+    </div>
 
-  <div class='text-field'>
-    <%= f.input :latitude, as: :hidden, type: "latitude" %>
-  </div>
+    <div class='text-field'>
+      <%= f.input :latitude, as: :hidden, type: "latitude" %>
+    </div>
 
-  <div class='text-field'>
-    <%= f.input :longitude, as: :hidden, type: "longitude" %>
-  </div>
+    <div class='text-field'>
+      <%= f.input :longitude, as: :hidden, type: "longitude" %>
+    </div>
 
-  <div class='attachment-preview'>
-    <% if @item.item_image? %>
-      <%= image_tag @item.item_image.url(:thumb) %>
-    <% end %>
-  </div>
+    <div id='attachment-preview'>
+      <% if @item.item_image? %>
+        <%= image_tag @item.item_image.url(:thumb) %>
+      <% end %>
+    </div>
 
-  <div class='attachment-field'>
-    <%= f.input :item_image, label: "Image" %>
-  </div>
+    <div class='attachment-field'>
+      <%= f.input :item_image, label: "Image" %>
+    </div>
 
-  <div class='submit-field'>
-    <%= f.button :submit %>
-  </div>
+    <div class='submit-field'>
+      <%= f.button :submit %>
+    </div>
 
-<% end %>
+  <% end %>
+</div>

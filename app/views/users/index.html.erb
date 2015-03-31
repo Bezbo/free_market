@@ -1,12 +1,12 @@
+<h1>User index</h1>
+
 <%= render partial: 'shared/page_with_search',
            locals: {search_path: users_path, search_placeholder: "user search.."} %>
-
-<h1>User index</h1>
 
 <% if @users.empty? %>
   no results..
 <% else %>
-  <table>
+  <table class="index">
     <tr>
       <th>name</th>
       <th>email</th>

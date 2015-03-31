@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
                                  default_url: "/images/:style/missing.png"
 
   validates :name, presence: true, length: { maximum: 75 }
-  validates :description, length: { maximum: 1000 }
+  validates :description, length: { maximum: 2000 }
   validates :user_id, presence: true
   validates :address, presence: true
 

@@ -1,0 +1,183 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+/*main*/
+
+html {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+body {
+  width: 1000px;
+  margin: auto;
+  white-space: nowrap;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 100px
+}
+
+a {
+  text-decoration: none;
+}
+
+/*footer*/
+
+footer {
+  height: 50px;
+  width: 100%;
+  margin-top: 1em;
+  padding: 1em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #ddd;
+  div {
+    color: grey;
+    padding: 0.2em;
+    vertical-align: center;
+  }
+  span {
+    padding: 0.2em;
+    display: block;
+  }
+}
+
+.footer-left {
+  width: 49%;
+  float: left;
+  display: inline;
+}
+
+.footer-right {
+  width: 49%;
+  float: right;
+  display: inline;
+  text-align: right;
+}
+
+/*navigation bar*/
+
+nav {
+  position: relative;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: right;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+  }
+}
+
+/*table*/
+
+table {
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  td {
+    max-width: 240px;
+    padding: 1em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+}
+
+.index {
+  td {
+    height: 100%;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+/*form*/
+
+.simple_form, #clearance {
+
+  div.input, div {
+    margin-bottom: 10px;
+    clear: both;
+  }
+  label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    margin: 2px 10px;
+  }
+  textarea {
+    width: 228px;
+    height: 228px;
+  }
+  .hint {
+    clear: left;
+    margin-left: 120px;
+    color: #555;
+    display: block;
+    font-style: italic;
+  }
+  .other-links {
+    margin-left: 120px;
+    padding-top: 1em;
+    display: block;
+  }
+}
+
+div.boolean, #attachment-preview, .simple_form input[type='submit'], .sign-in input[type='submit'] {
+  margin-left: 120px;
+}
+
+.search {
+  padding-bottom: 1em;
+}
+
+.search input[type="submit"] {
+  margin-left: 0px;
+}
+
+/*map*/
+
+#map {
+  height: 480px;
+  width: 530px;
+  float: right;
+}
+
+#static_map {
+  float: right;
+}
+
+#signed_as {
+  font-size: 0.8em;
+}
+
+/*other*/
+
+#splitter {
+  border-top: 2px solid #ddd;
+  th {
+    padding: 1em;
+  }
+}
+
+.update-destroy {
+  padding: 1em;
+}

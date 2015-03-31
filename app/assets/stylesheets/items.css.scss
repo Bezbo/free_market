@@ -4,7 +4,15 @@
 
 #tag_cloud {
   width: 400px;
+  padding: 1em;
+  background-color: #ddd;
+  border-radius: 10px;
   line-height: 1.6em;
+  div {
+    display: inline;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
   .s { font-size: 0.8em; }
   .m { font-size: 1.2em; }
   .l { font-size: 1.8em; }

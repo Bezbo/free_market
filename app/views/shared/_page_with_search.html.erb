@@ -1,4 +1,6 @@
-<%= simple_form_for search_path, method: :get, html: { class: :search } do %>
-  <%= text_field_tag :term, params[:term], placeholder: search_placeholder %>
-  <%= submit_tag "search", name: nil %>
-<% end %>
+<div id="search">
+  <%= simple_form_for search_path, method: :get, html: { class: :search } do %>
+    <%= text_field_tag :term, params[:term], placeholder: search_placeholder %>
+    <%= submit_tag "search", name: nil %>
+  <% end %>
+</div>
