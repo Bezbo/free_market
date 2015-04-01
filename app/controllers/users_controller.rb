@@ -6,7 +6,8 @@ class UsersController < Clearance::UsersController
   authorize_resource only: [:edit, :update, :destroy]
 
   def index
-    @users = User.search(params[:term])
+    @users = User.order("name").search(params[:term])
+    @paginated_users = Kaminari.paginate_array(@users).page(params[:page])
   end
 
   def show

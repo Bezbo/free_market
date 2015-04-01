@@ -20,7 +20,7 @@
     <tr>
       <th>items:</th>
     </tr>
-    <% @items.each do |item| %>
+    <% @paginated_items.each do |item| %>
       <tr>
         <td><%= image_tag item.item_image.url(:thumb) %></td>
         <td><%= link_to item.name, item %></td>
@@ -28,5 +28,7 @@
     <% end %>
   </table>
 <% end %>
+
+<%= paginate @paginated_items %>
 
 

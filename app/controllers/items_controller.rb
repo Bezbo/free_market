@@ -7,10 +7,11 @@ class ItemsController < ApplicationController
 
   def index
     if params[:tag]
-      @items = Item.tagged_with(params[:tag]).search(params[:term])
+      @items = Item.order("created_at DESC").tagged_with(params[:tag]).search(params[:term])
     else
-      @items = Item.search(params[:term])
+      @items = Item.order("created_at DESC").search(params[:term])
     end
+    @paginated_items = Kaminari.paginate_array(@items).page(params[:page]).per(15)
     respond_to do |format|
       format.html
       format.json{ render json: @items }
