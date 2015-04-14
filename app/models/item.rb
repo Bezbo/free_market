@@ -21,9 +21,9 @@ class Item < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['name ILIKE ?', "%#{search}%"])
+      where('name ILIKE ?', "%#{search}%").load
     else
-      find(:all)
+      where(@item = true).load
     end
   end
 

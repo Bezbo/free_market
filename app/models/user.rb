@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-  has_many :items, dependent: :destroy, order: 'created_at DESC'
+  has_many :items, -> { order 'created_at DESC' }, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -13,9 +13,9 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['name ILIKE ? OR email ILIKE?', "%#{search}%", "%#{search}%"])
+      where('name ILIKE ? OR email ILIKE?', "%#{search}%", "%#{search}%").load
     else
-      find(:all)
+      where(@user = true).load
     end
   end
 end

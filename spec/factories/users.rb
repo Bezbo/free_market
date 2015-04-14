@@ -1,8 +1,16 @@
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-email "MyString"
-role "MyString"
+    name "john"
+    email "doe@example.com"
+    password "foobar"
+  end
+
+  factory :admin, parent: :user do
+    role "admin"
+  end
+
+  factory :invalid_user, parent: :user do
+    email nil
   end
 
 end
